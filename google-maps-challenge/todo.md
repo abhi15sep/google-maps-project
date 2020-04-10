@@ -20,4 +20,12 @@
 
 - Show the info window when you click on the individual store DONE
 
-- Add a beautiful transition on the hover of the individual store
+- Complete styling for the marker infowindow 
+
+- Open the info window marker on store selection in stores list
+
+- Allow an user to search for the stores in a zipcode
+
+- Add a beautiful transition on hover of an individual store
+
+**AND WE'RE DONE**
