@@ -3,10 +3,6 @@
 //When you load the website I want this to initiate
 window.onload = () => { displayStores(); } //the syntax before siumulates a function in ES6
 
-var map;
-var markers = [];
-var infoWindow;
-
 function initMap() {
     var LosAngeles = {
         lat: 34.063380, 
@@ -17,7 +13,6 @@ function initMap() {
         zoom: 11,
         mapTypeId: 'roadmap',
     });
-    showStoresMarkers();
 }
 
 function displayStores(){
@@ -44,28 +39,4 @@ function displayStores(){
         `
         document.querySelector('.stores-list').innerHTML = storesHtml;
     }
-}
-
-function showStoresMarkers(){
-
-    for(var [index, store] of stores.entries()){
-        
-        var latlng = new google.maps.LatLng(
-            store["coordinates"]["latitude"],
-            store["coordinates"]["longitude"]
-        );
-        var name = store["name"];
-        var address = store["addessLines"][0];
-        createMarker(latlng, name, address, index+1)
-    }
-}
-
-function createMarker(latlng, name, address, index){
-    var html = "<b>" + name + "</b> <br/>" + address;
-    var marker = new google.maps.Marker({map: map, position: latlng});
-    /*google.maps.event.addListener(marker, 'click', function() {
-        infoWindow.setContent(html);
-        infoWindow.open(map, marker);
-    }); */
-    markers.push(marker);
 }
