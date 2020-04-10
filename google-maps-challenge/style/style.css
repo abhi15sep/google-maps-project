@@ -4,3 +4,121 @@ body {
     margin: 0;
     padding: 0;
 }
+
+/* # is used for id, and id is unique in the whole code, you can call it only once*/
+#map{
+    height: 100%;
+    width: 100%;
+}
+
+/* . in the other side is used for class and can be called as many times as you require in the whole code*/
+.title{
+    position: absolute; /*to able the superpose function*/
+    z-index: 100; /*to prioritize the layer level*/
+    font-size: 80px; /*to change the size*/
+    font-weight: bold; /*to make a specific mod to the font*/
+    color: #222222; /*change color*/
+    text-transform: uppercase; /*to give it different text styles*/
+    top: 100px; /*to give it a distance from the top and on*/
+    left: 100px; /*to give it a distance to the left and on*/
+}
+
+.search-container {
+    border-radius: 30px;
+    position: absolute;
+    z-index: 100;
+    top: 230px;
+    left: 100px;
+    width: 400px;
+    height: 60px;
+    background-color: #454e53;
+    display: flex;
+}
+
+.search-container .search {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.search-container input {
+    width: 100%;
+    font-size: 25px;
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.search-container input:focus {
+    outline: none;
+}
+
+.search i {
+    font-size: 25px;
+    color: white;
+}
+
+.stores-list-container {
+    width: 400px;
+    position: absolute;
+    z-index: 100;
+    background: white;
+    left: 100px;
+    top: 320px;
+    bottom: 20px;
+    border-radius: 30px;
+    display: flex;
+    padding-bottom: 30px;
+    overflow-y: hidden;
+}
+
+.store-container {
+    border-bottom: 1px solid #979797;
+    display: flex;
+}
+.store-info-container {
+    flex-grow: 1;
+}
+
+.store-number-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.store-address {
+    font-size: 21px;
+    color: #514c4c;
+    margin-top: 30px;
+}
+
+.store-address span {
+    display: block;
+}
+
+.store-phone-number {
+    color: #b5adad;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.store-number {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #454E53;
+    color: #b5adad;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+.stores-list {
+    flex-grow: 1;
+    padding-right: 20px;
+    padding-left: 20px;
+    overflow-y: scroll;
+}
