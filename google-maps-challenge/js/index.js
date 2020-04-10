@@ -18,6 +18,7 @@ function initMap() {
         mapTypeId: 'roadmap',
     });
     showStoresMarkers()
+    infoWindow = new google.maps.InfoWindow();
 }
 
 function displayStores(){
@@ -66,9 +67,9 @@ function createMarker(latlng, name, address, index){
       map: map,
       position: latlng
     });
-//    google.maps.event.addListener(marker, 'click', function() {
-//      infoWindow.setContent(html);
-//      infoWindow.open(map, marker);
-//    });
+    google.maps.event.addListener(marker, 'click', function() {
+      infoWindow.setContent(html);
+      infoWindow.open(map, marker);
+    });
     markers.push(marker);
 }

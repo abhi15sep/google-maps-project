@@ -16,8 +16,8 @@
 
 - Show all the stores in the store's list based on real world data DONE (with exception, check out later)
 
-- Show the marker based on real world store data
+- Show the marker based on real world store data DONE
 
-- Show the info window when you click on the individual store
+- Show the info window when you click on the individual store DONE
 
 - Add a beautiful transition on the hover of the individual store
