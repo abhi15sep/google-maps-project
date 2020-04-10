@@ -47,15 +47,17 @@ function displayStores(){
 }
 
 function showStoresMarkers(){
-
+    var bounds = new google.maps.LatLngBounds();
     for(var [index, store] of stores.entries()){
         var latlng = new google.maps.LatLng(
             store["coordinates"]["latitude"],
             store["coordinates"]["longitude"]);
         var name = store["name"];
         var address = store["addressLines"][0];
+        bounds.extend(latlng);
         createMarker(latlng, name, address, index+1)
     }
+    map.fitBounds(bounds);
 }
 
 function createMarker(latlng, name, address, index){
