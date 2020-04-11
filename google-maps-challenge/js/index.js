@@ -1,7 +1,7 @@
 //console.log("HELLO WORLD"); The JS print in console command
 
 //When you load the website I want this to initiate
-window.onload = () => { displayStores(); } //the syntax before siumulates a function in ES6
+window.onload = () => { } //the syntax before siumulates a function in ES6
 
 var map;
 var markers = [];
@@ -17,11 +17,47 @@ function initMap() {
         zoom: 11,
         mapTypeId: 'roadmap',
     });
-    showStoresMarkers()
     infoWindow = new google.maps.InfoWindow();
+    searchStores();
 }
 
-function displayStores(){
+function searchStores(){
+    var foundStores = [];
+    var zipCode = document.getElementById('zip-code-input').value;
+    if(zipCode){
+        for(var store of stores){
+            var postal = store['address']['postalCode'].substring(0,5);
+            if(postal == zipCode){
+                foundStores.push(store);
+            }
+        }
+    } else {
+        foundStores = stores;
+    }
+    clearLocations();
+    displayStores(foundStores);
+    showStoresMarkers(foundStores);
+    setOnClickListener();
+}
+
+function clearLocations() {
+    infoWindow.close();
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(null);
+    }
+    markers.length = 0;
+  }
+
+function setOnClickListener() {
+    var storeElements = document.querySelectorAll('.store-container');
+    storeElements.forEach(function(elem, index){
+        elem.addEventListener('click', function(){
+            new google.maps.event.trigger(markers[index], 'click');
+        })
+    })
+}
+
+function displayStores(stores){
     var storesHtml = '';
     for(var [index, store] of stores.entries()){
         var address = store['addressLines'];
@@ -47,7 +83,7 @@ function displayStores(){
     }
 }
 
-function showStoresMarkers(){
+function showStoresMarkers(stores){
     var bounds = new google.maps.LatLngBounds();
     for(var [index, store] of stores.entries()){
         var latlng = new google.maps.LatLng(
@@ -73,9 +109,15 @@ function createMarker(latlng, name, address, openStatusText, phoneNumber, index)
                 ${openStatusText}
             </div>
             <div class="store-info-address>
+                <div class="circle">
+                    <i class="fas fa-location-arrow"></i>
+                </div>
                 ${address}
             </div>
             <div class="store-info-phone">
+                <div class="circle">
+                    <i class="fas fa-phone"></i>
+                </div>
                 ${phoneNumber}
             </div>
         </div>
